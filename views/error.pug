@@ -1,6 +1,11 @@
-extends layout
-
-block content
-  h1= message
-  h2= error.status
-  //- pre #{error.stack}
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/errorStyle.css')
+  body
+    h1= "Oops! You ran out of oxygen"
+    h2= "The page you're looking for is now beyond our reach. Let's get you..."
+    h1= error.status + " " +message
+    a(href='http://localhost:8080/')= "Click here to go to home page"
+    //- pre #{error.stack}
