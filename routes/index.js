@@ -18,7 +18,7 @@ router.get('/calendar', function (req, res, next) {
   var name = req.query.name;
   if (name) {
     if (data['friendsName'].includes(name)) {
-      res.redirect('/calendar/'+name);
+      res.redirect('/calendar/' + name);
     } else {
       res.redirect('/404');
     }
@@ -30,12 +30,15 @@ router.get('/calendar', function (req, res, next) {
 });
 
 router.post('/calendar', function (req, res, next) {
-  res.redirect('/calendar/'+req.body.name);
+  res.redirect('/calendar/' + req.body.name);
 });
 
 router.get('/calendar/:id', function (req, res, next) {
-  const name=req.params.id;
-  var userDetails= files.getFileContent("data/"+name.toLowerCase()+".json")
+  const name = req.params.id;
+  if (!(data['friendsName'].includes(name))) {
+    res.redirect('/404');
+  }
+  var userDetails = files.getFileContent("data/" + name.toLowerCase() + ".json")
   userDetails = JSON.parse(userDetails);
   res.render('users', {
     title: name,
