@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var data = require('../data/data.json');
+var files = require('../own_modules/CustomFileModules');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -35,7 +36,8 @@ router.post('/calendar', function (req, res, next) {
 router.get('/calendar/:id', function (req, res, next) {
   var name=req.params.id;
   res.render('users', {
-    title: name
+    title: name,
+    value:files.getFileContent("data/"+name.toLowerCase()+".json"),
   });
 });
 
