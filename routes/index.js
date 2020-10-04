@@ -34,10 +34,12 @@ router.post('/calendar', function (req, res, next) {
 });
 
 router.get('/calendar/:id', function (req, res, next) {
-  var name=req.params.id;
+  const name=req.params.id;
+  var userDetails= files.getFileContent("data/"+name.toLowerCase()+".json")
+  userDetails = JSON.parse(userDetails);
   res.render('users', {
     title: name,
-    value:files.getFileContent("data/"+name.toLowerCase()+".json"),
+    details: userDetails,
   });
 });
 

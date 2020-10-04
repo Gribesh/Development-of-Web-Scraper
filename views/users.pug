@@ -2,5 +2,9 @@ extends layout
 
 block content
   h1= title
-  h2= value
+  -var ob= details
+  -ob = details['calendarDetails']
+  -for(var i in ob)
+    -for(var prop in ob[i])
+        p #{prop}: #{ob[i][prop]}
 
