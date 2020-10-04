@@ -1,5 +1,30 @@
-extends layout
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/calendarStyle.css')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+  body
+    block content
+      div.text-center
+          form(class="form-signin" method="POST" action="#")
+              #error
+                  if error
+                      p.text-danger Error!!!
 
-block content
-  h1= title
-  p Welcome to #{title}
+              - var h1Classes = ['h3', 'mb-3', 'font-weight-normal']
+              h1(class=h1Classes) Who are you?
+              
+              select(name='dropDown', class="form-control")
+                each name in friendsName
+                  option=name
+              <br>
+              //-signIn button
+              - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
+              button(class=buttonClass type="submit") Let's View 
+              
+              - var pClasses=['mt-5', 'mb-3', 'text-muted'];
+              p(class=pClasses) &copy; Gribesh 2020
