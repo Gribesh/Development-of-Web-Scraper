@@ -38,4 +38,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.listen(process.env.PORT , function(){
+  console.log(`Server listenting on port ${app.get('port')}. Please use http://localhost:${app.get('port')}/ on browser.`);
+  console.log('[INFO] Port can be change from ./bin/www:15');
+  console.log('[INFO] Press Ctrl+C. To Exit to terminate this Server');
+});
+
 module.exports = app;
