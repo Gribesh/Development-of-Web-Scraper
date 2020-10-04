@@ -13,18 +13,23 @@ router.get('/weekend', function (req, res, next) {
   });
 });
 
-router.get('/calendar/:id', function (req, res, next) {
-  var name = req.params.id;
-  if (name) {
-    res.render('polo', {
-      title: name
-    });
-  } else {
+router.get('/calendar', function (req, res, next) {
+    var name= req.query.name;
+    if(name){
+      res.render('polo', {
+        title: name
+      });
+    }
     res.render('calendar', {
       title: 'Calendar Page',
       friendsName: data['friendsName']
     });
-  }
+});
+
+router.post('/calendar', function (req, res, next) {
+  res.render('polo', {
+    title: req.body.name
+  });
 });
 
 router.get('/cinema', function (req, res, next) {
