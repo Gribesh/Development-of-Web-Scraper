@@ -14,16 +14,20 @@ router.get('/weekend', function (req, res, next) {
 });
 
 router.get('/calendar', function (req, res, next) {
-    var name= req.query.name;
-    if(name){
+  var name = req.query.name;
+  if (name) {
+    if (data['friendsName'].includes(name)) {
       res.render('polo', {
         title: name
       });
+    } else {
+      res.redirect('/404');
     }
-    res.render('calendar', {
-      title: 'Calendar Page',
-      friendsName: data['friendsName']
-    });
+  }
+  res.render('calendar', {
+    title: 'Calendar Page',
+    friendsName: data['friendsName']
+  });
 });
 
 router.post('/calendar', function (req, res, next) {
