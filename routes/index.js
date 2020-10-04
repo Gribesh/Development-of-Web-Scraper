@@ -17,9 +17,7 @@ router.get('/calendar', function (req, res, next) {
   var name = req.query.name;
   if (name) {
     if (data['friendsName'].includes(name)) {
-      res.render('polo', {
-        title: name
-      });
+      res.redirect('/calendar/'+name);
     } else {
       res.redirect('/404');
     }
@@ -31,8 +29,13 @@ router.get('/calendar', function (req, res, next) {
 });
 
 router.post('/calendar', function (req, res, next) {
-  res.render('polo', {
-    title: req.body.name
+  res.redirect('/calendar/'+req.body.name);
+});
+
+router.get('/calendar/:id', function (req, res, next) {
+  var name=req.params.id;
+  res.render('users', {
+    title: name
   });
 });
 
