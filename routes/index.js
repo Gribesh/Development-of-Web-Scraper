@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var data = require('../data/data.json');
 var files = require('../own_modules/CustomFileModules');
+var fs = require('fs');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -44,6 +45,32 @@ router.get('/calendar/:id', function (req, res, next) {
     title: name,
     details: userDetails,
   });
+});
+
+router.post('/calendar/:id', function (req, res, next) {
+  console.log("This is called.")
+  var date = req.body.datepicker;
+  var isFree = req.body.isFree;
+  var name = req.body.personname;
+  var previousFileContent = files.getFileContent('data/'+name.toLowerCase()+'.json');
+  var jsonOfpreviousFileContent = JSON.parse(previousFileContent);
+  var saveObject = {
+    "name": name,
+    "date": date,
+    "isFree": isFree
+  }
+  jsonOfpreviousFileContent.calendarDetails.push(saveObject);
+  var saveFilePath= 'data/'+name.toLowerCase()+'.json'
+  fs.writeFile(saveFilePath, JSON.stringify(jsonOfpreviousFileContent, null, 4), 'utf-8', function (err) {
+    if (err) {
+      // alert("Error" + err.message);
+      console.log("Error" + err.message);
+    } else {
+      // alert("Updated data successfully");
+      console.log("Updated data successfully");
+    }
+  });
+  res.redirect('/calendar/' + name);
 });
 
 router.get('/cinema', function (req, res, next) {
