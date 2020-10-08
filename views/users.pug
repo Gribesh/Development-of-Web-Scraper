@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title= title
+    title= title + ' | Calendar'
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     script(src='/javascripts/jquery-3.2.1.slim.min.js')
@@ -20,7 +20,7 @@ html
           .col-md-4
             input#personname(type="hidden", name="personname", value=title)
             label Pick a date
-            input#datepicker(width='276', name="date")
+            input#datepicker(width='276', name="datepicker")
             script.
               $('#datepicker').datepicker({
                 uiLibrary: 'bootstrap4'
