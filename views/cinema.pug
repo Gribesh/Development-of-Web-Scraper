@@ -1,5 +1,36 @@
-extends layout
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    script(src='/javascripts/jquery-3.2.1.slim.min.js')
+    script(src='/javascripts/popper.min.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script(src='https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js', type='text/javascript')
+    link(href='https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css', rel='stylesheet', type='text/css')
 
-block content
-  h1= title
-  p Welcome to #{title}
+
+  body      
+    .container
+      h4= "Movie Details"
+      -var ob= details
+      -ob = details['movies']
+      .card-deck
+        -for(var i in ob)
+          -var test = !(i%3)
+          //- TODO
+          //- Attempt to make 3 in a row (Failed)  Currently .card-deck becomes one div and closes can be viewed by inspecting
+          //- p.card-text #{i%3} #{test}
+          //- #{(test? : .card-deck)}
+          //- if test
+            //- p= "Inside" 
+          .card
+            .card-body
+              h5.card-title Card title
+              -for(var prop in ob[i])
+                p.card-text #{prop}: #{ob[i][prop]}
+            .card-footer
+                small.text-muted Updated Date and Time
+
+

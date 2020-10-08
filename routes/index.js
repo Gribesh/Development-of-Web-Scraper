@@ -74,8 +74,11 @@ router.post('/calendar/:id', function (req, res, next) {
 });
 
 router.get('/cinema', function (req, res, next) {
+  var movieDetails = files.getFileContent("data/cinema.json");
+  movieDetails = JSON.parse(movieDetails);
   res.render('cinema', {
-    title: 'Cinema Page'
+    title: 'Cinema Page',
+    details: movieDetails
   });
 });
 
