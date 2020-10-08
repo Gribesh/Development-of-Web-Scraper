@@ -46,6 +46,13 @@
             resolve(returnData);
         })
     }
+    scrappingFunction.getAllData = async (userName) => {
+        var datas = [];
+        await scrappingFunction.calculateAllData().then(data => {
+            datas = data[userName].allData
+        });
+        return datas;
+    }
     scrappingFunction.getFreeDate = async (userName) => {
         var datas = [];
         await scrappingFunction.calculateAllData().then(data => {
@@ -53,6 +60,12 @@
         });
         return datas;
     }
-    scrappingFunction.getFreeDate("Kumar")
+    scrappingFunction.getBusyDate = async (userName) => {
+        var datas = [];
+        await scrappingFunction.calculateAllData().then(data => {
+            datas = data[userName].busyDate
+        });
+        return datas;
+    }
     module.exports = scrappingFunction;
 })();
