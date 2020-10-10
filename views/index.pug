@@ -1,5 +1,30 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/calendarStyle.css')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+  body
+    block content
+      div.text-center
+        p= "Kumar Data"
+        ui
+          each value in kumarData
+            li=value
+        br
+        p= "Mahesh Data"
+        ui
+          each value in maheshData
+            li=value
+        br
+        p= "Parvesh Data"
+        ui
+          each value in parveshData
+            li=value
+        p= "Suggested Data"
+        ui
+          each value in suggestedDate
+            li=value

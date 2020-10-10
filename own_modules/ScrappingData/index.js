@@ -7,7 +7,7 @@
 
     scrappingFunction.calculateAllData = async () => {
         var returnData = [];
-        var userNames = files.getFileContent("../../data/data.json"); //Update the path if changed the location
+        var userNames = files.getFileContent("data/data.json"); //Update the path if changed the location
         userNames = JSON.parse(userNames).friendsName;
         // console.log(userNames);
         for (user in userNames) {

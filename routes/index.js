@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var data = require('../data/data.json');
 var files = require('../own_modules/CustomFileModules');
+var scrap = require('../own_modules/ScrappingData');
 var fs = require('fs');
 
 /* GET home page. */
@@ -9,9 +10,25 @@ router.get('/', function (req, res, next) {
   res.redirect('/weekend');
 });
 
-router.get('/weekend', function (req, res, next) {
+router.get('/weekend', async function (req, res, next) {
+  var kumarData = await  scrap.getFreeDate("Kumar");
+  var maheshData = await  scrap.getFreeDate("Mahesh");
+  var parveshData = await  scrap.getFreeDate("Parvesh");
+  var suggestedDate=[];
+  var length = Math.min(kumarData.length,maheshData.length,parveshData.length);
+  for(var i=0;i<length;i++){
+    if(maheshData.includes(kumarData[i])){
+      if(parveshData.includes(kumarData[i])){
+        suggestedDate.push(kumarData[i]);
+      }
+    }
+  }
   res.render('index', {
-    title: 'Development of Web Scraper'
+    title: 'Development of Web Scraper',
+    kumarData: kumarData,
+    maheshData:maheshData,
+    parveshData:parveshData,
+    suggestedDate:suggestedDate
   });
 });
 
