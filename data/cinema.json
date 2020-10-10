@@ -1,15 +1,27 @@
 {
     "movies": [{
             "name": "ABC",
-            "date": "2020-02-21"
+            "date": "2020-02-21",
+            "time":"3PM-6PM",
+            "isBooked":"false"
         },
         {
             "name": "XYZ",
-            "date": "2020-02-22"
+            "date": "2020-02-22",
+            "time":"3PM-6PM",
+            "isBooked":"false"
+        },
+        {
+            "name": "ZYX",
+            "date": "2020-02-22",
+            "time":"3PM-6PM",
+            "isBooked":"false"
         },
         {
             "name": "KLM",
-            "date": "2020-02-23"
+            "date": "2020-02-23",
+            "time":"3PM-6PM",
+            "isBooked":"true"
         }
     ]
 }

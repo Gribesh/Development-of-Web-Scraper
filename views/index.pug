@@ -10,21 +10,41 @@ html
   body
     block content
       div.text-center
-        p= "Kumar Data"
-        ui
-          each value in kumarData
-            li=value
-        br
-        p= "Mahesh Data"
-        ui
-          each value in maheshData
-            li=value
-        br
-        p= "Parvesh Data"
-        ui
-          each value in parveshData
-            li=value
-        p= "Suggested Data"
-        ui
-          each value in suggestedDate
-            li=value
+        if error
+          #error
+            p.text-danger #{error}
+        else
+          //- p= "Kumar Data"
+          //- ui
+          //-   each value in kumarData
+          //-     li=value
+          //- br
+          //- p= "Mahesh Data"
+          //- ui
+          //-   each value in maheshData
+          //-     li=value
+          //- br
+          //- p= "Parvesh Data"
+          //- ui
+          //-   each value in parveshData
+          //-     li=value
+          p= "Suggested Date"
+          ui
+            each value in suggestedDate
+              li=value
+
+    .container
+      h6= "Movie available for the date"
+      -var ob= moviesDate
+      .card-deck
+        -for(var i in ob)
+          -for(var y in ob[i])
+            .card
+              .card-body
+                h5.card-title Card title
+                -for(var prop in ob[i][i])
+                  p.card-text #{prop}: #{ob[i][y][prop]}
+              .card-footer
+                  small.text-muted Updated Date and Time
+
+      a.btn.btn-primary.btn-lg.active(href='/restaurant', role='button')  Lets Book restaurant

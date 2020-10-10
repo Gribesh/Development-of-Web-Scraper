@@ -23,12 +23,18 @@ router.get('/weekend', async function (req, res, next) {
       }
     }
   }
+  var moviesDate =[];
+  for(date of suggestedDate ){
+      moviesDate.push(scrap.getMovieDetails(date));
+  }
   res.render('index', {
     title: 'Development of Web Scraper',
     kumarData: kumarData,
     maheshData:maheshData,
     parveshData:parveshData,
-    suggestedDate:suggestedDate
+    suggestedDate:suggestedDate,
+    moviesDate:moviesDate,
+    error: ""
   });
 });
 
