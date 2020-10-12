@@ -12,18 +12,21 @@ html
         .card
           .card-header
             h3 Sign In
+          if error
+            p.text-warning(style='text-align: center;')
+              | #{error}
           .card-body
-            form
+            form(method="POST" action="#")
               .input-group.form-group
                 .input-group-prepend
                   span.input-group-text
                     i.fas.fa-user
-                input.form-control(type='email', placeholder='Email')
+                input#email.form-control(type='email', placeholder='Email', name="email")
               .input-group.form-group
                 .input-group-prepend
                   span.input-group-text
                     i.fas.fa-key
-                input.form-control(type='Password', placeholder='Password')
+                input#password.form-control(type='Password', placeholder='Password', name="password")
               .row.align-items-center.remember
                 input(type='checkbox')
                 | Remember Me
