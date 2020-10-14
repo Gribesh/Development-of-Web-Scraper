@@ -136,15 +136,21 @@ router.post('/restaurant', function (req, res, next) {
 
 
 router.get('/restaurant/auth', function (req, res, next) {
-  if (req.session.email) {
-    res.write(`<h1>Hello ${req.session.email} </h1><br>`);
-    res.end('<a href=' + '/restaurant/logout' + '>Logout</a>');
-  } else {
-    // res.write('<h1>Please login first.</h1>');
-    // res.end('<a href=' + '/' + '>Login</a>');
-    req.session.error="Please login first."
-    res.redirect('/restaurant');
-  }
+  res.render("restaurantHome",{
+    title:"Home Page"
+  })
+  // if (req.session.email) {
+  //   // res.write(`<h1>Hello ${req.session.email} </h1><br>`);
+  //   // res.end('<a href=' + '/restaurant/logout' + '>Logout</a>');
+  //   res.render("restaurantHome",{
+  //     title:"Home Page"
+  //   })
+  // } else {
+  //   // res.write('<h1>Please login first.</h1>');
+  //   // res.end('<a href=' + '/' + '>Login</a>');
+  //   req.session.error="Please login first."
+  //   res.redirect('/restaurant');
+  // }
 });
 
 router.get('/restaurant/logout',(req,res) => {

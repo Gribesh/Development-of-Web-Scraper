@@ -1,5 +1,32 @@
-extends layout
+doctype html
+head
+  title Restaurant | Booking Information
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' )
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
+  link(rel='stylesheet', href='/stylesheets/restaurantHome.css')
+body
+  .wrapper(style="background-image: url('/images/banner.jpg')")
+    .inner
+      .image-holder
+        img(src='/images/restaurant.jpg')
+      form(action='')
+        h3 Booking Information
+        h6.text-danger= "This is some info"
+        br
+        .form-wrapper
+          input#firstName.form-control(type='text', placeholder='Name')
+        .form-wrapper
+          input#phone.form-control(type='number', placeholder='Phone')
+        .form-wrapper
+          .md-form.md-outline.input-with-post-icon.timepicker(darktheme='true')
+            input#dark-version-example.form-control(type='text', placeholder='Select time')
+            label(for='dark-version-example') Dark version, 24 hours
+            i.fas.fa-envelope.input-prefix
 
-block content
-  h1= title
-  
+
+        .form-group.container-login100-form-btn
+          button#btn-update(type='button')
+            | Done
+            i.zmdi.zmdi-arrow-right
+
