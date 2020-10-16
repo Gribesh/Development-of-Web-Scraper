@@ -16,7 +16,7 @@ router.get('/weekend', async function (req, res, next) {
   var parveshData = await scrap.getFreeDate("Parvesh");
   var suggestedDate = [];
   var error;
-  var length = Math.min(kumarData.length, maheshData.length, parveshData.length);
+  var length = Math.max(kumarData.length, maheshData.length, parveshData.length);
   for (var i = 0; i < length; i++) {
     if (maheshData.includes(kumarData[i])) {
       if (parveshData.includes(kumarData[i])) {
