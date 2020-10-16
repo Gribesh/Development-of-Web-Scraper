@@ -166,7 +166,7 @@ router.get('/restaurant/auth', function (req, res, next) {
       jsonFileData[date]={};
       jsonFileData[date][time]={};
       const obj={
-        isBooked: false,
+        isBooked: "false",
         bookId: Math.floor(Math.random() * Math.floor(100))
       }
       jsonFileData[date][time]=obj
@@ -195,10 +195,32 @@ router.get('/restaurant/auth', function (req, res, next) {
   }
 });
 router.post('/restaurant/auth', function (req, res, next) {
+  const time = req.session.payload.time;
+  const email = req.session.email;
+  const date= req.session.payload.date;
+  var fileData = files.getFileContent('data/restaurantBooking.json');
+  var jsonFileData = JSON.parse(fileData);
+  var saveObject={
+    isBooked: "true",
+    bookId: jsonFileData[date][time].bookId,
+    email:email
+  }
+  jsonFileData[date][time] = saveObject;
+  fs.writeFile('data/restaurantBooking.json', JSON.stringify(jsonFileData, null, 4), 'utf-8', function (err) {
+    if (err) {
+      // alert("Error" + err.message);
+      console.log("Error" + err.message);
+    } else {
+      // alert("Updated data successfully");
+      console.log("Updated data successfully");
+    }
+  });
 
   res.render("restaurantHome",{
     title:"Home Page",
-    payload:req.session.payload
+    payload:req.session.payload,
+    email:req.session.email,
+    receiveInfo:saveObject
   })
 });
 router.get('/restaurant/logout',(req,res) => {

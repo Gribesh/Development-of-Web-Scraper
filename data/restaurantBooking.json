@@ -1,31 +1,9 @@
 {
-    "bookingDetails": [
-        {
-            "name": "kumar",
-            "date": "2020-02-21",
-            "isFree": "true"
-        },
-        {
-            "name": "kumar",
-            "date": "2020-02-22",
-            "isFree": "true"
-        },
-        {
-            "name": "kumar",
-            "date": "2020-02-23",
-            "isFree": "false"
-        }
-    ],
     "2020-02-21": {
         "3PM-6PM": {
             "isBooked": "true",
-            "bookId": 78
-        }
-    },
-    "2020-02-22": {
-        "3PM-6PM": {
-            "isBooked": false,
-            "bookId": 35
+            "bookId": 27,
+            "email": "1nt17cs063.gribesh@nmit.ac.in"
         }
     }
 }

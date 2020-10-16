@@ -10,34 +10,33 @@ body
     .inner
       .image-holder
         img(src='/images/restaurant.jpg')
-      form(action='')
+      form(method="POST" action="#")
         h3 Booking Information
         h6.text-danger= "This is some info"
-        if receiveInfo
-          p= receiveInfo.isBooked
-          p= receiveInfo.bookId
         br
         .form-wrapper
           label(for='email') Email:
-          input#email.form-control(type='text', name='email', value=email, disabled)
+          input.form-control(type='text', value=email, disabled,  name="email" , id="email")
         .form-wrapper
           if payload
-            input#time.form-control(type='text', name='time', value=payload.time, disabled)
+            input.form-control(type='text', value=payload.time, disabled, name="time" , id="time")
           else
-            input#time.form-control(type='text', name='time', placeholder='Time (1AM-3AM)')
+            input.form-control(type='text', placeholder='Time (1AM-3AM)',name="time" , id="time")
         .form-wrapper
           if payload
-            input#email.form-control(type='text', value=payload.date, disabled)
+            input.form-control(type='text', value=payload.date, disabled, name="date" , id="date")
           else
-            input#email.form-control(type='text', placeholder='Date')
+            input.form-control(type='text', placeholder='Date', name="date" , id="date")
         
         if receiveInfo
           if receiveInfo.isBooked=='true'
-            h6.text-danger Sorry to inform you, but all seats are booked.
-            a(href='http://localhost:8080', style='text-decoration: none') Please Plan again
+            if receiveInfo.email
+              h6.text-success Booking Done Succesfully. Enjoy!!
+            else
+              h6.text-danger Sorry to inform you, but all seats are booked.
+              a(href='http://localhost:8080', style='text-decoration: none') Please Plan again
           else
             h6.text-success Seats available, If you want to book please press submit button. 
             .form-group.container-login100-form-btn
-              button#btn-update(type='button')
+              button#btn-update(type='submit')
                 | Submit
-                i.zmdi.zmdi-arrow-right
