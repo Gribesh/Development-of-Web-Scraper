@@ -1,5 +1,3 @@
-
-
 function alertFunction() {
   var files = require('../../own_modules/CustomFileModules');
   var date = document.getElementById("datepicker").value;
@@ -20,5 +18,4 @@ function alertFunction() {
       alert("Updated data successfully");
     }
   })
-
 }

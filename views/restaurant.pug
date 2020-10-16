@@ -22,6 +22,9 @@ html
                   span.input-group-text
                     i.fas.fa-user
                 input#email.form-control(type='email', placeholder='Email', name="email")
+                if payload
+                  input#date(type='hidden', name='date',value=payload.date)
+                  input#time(type='hidden', name='time',value=payload.time)
               .input-group.form-group
                 .input-group-prepend
                   span.input-group-text
@@ -34,8 +37,3 @@ html
                 input.btn.float-right.login_btn(type='submit', value='Login')
           .card-footer
             p.text-center= "Gribesh"
-            //- .d-flex.justify-content-center.links
-            //-   | Don&apos;t have an account?
-            //-   a(href='#') Sign Up
-            //- .d-flex.justify-content-center
-            //-   a(href='#') Forgot your password?

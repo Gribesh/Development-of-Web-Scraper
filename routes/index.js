@@ -106,6 +106,12 @@ router.get('/cinema', function (req, res, next) {
 });
 
 router.get('/restaurant', function (req, res, next) {
+  var date=req.query.date;
+  var time =  req.query.time;
+  var payload={
+    date:date,
+    time:time
+  }
   if (req.session.email) {
     res.redirect('/restaurant/auth');
   } else {
@@ -115,7 +121,7 @@ router.get('/restaurant', function (req, res, next) {
     }
     res.render('restaurant', {
       title: 'Restaurant Page',
-      error:error
+      error:error,
     });
   }
 });
@@ -123,36 +129,78 @@ router.get('/restaurant', function (req, res, next) {
 router.post('/restaurant', function (req, res, next) {
   var email = req.body.email;
   var password = req.body.password;
+  var payload;
+  if(req.body.time && req.body.date){
+    payload={
+      time:req.body.time,
+      date:req.body.date
+    };
+  }
   if (email === "1nt17cs063.gribesh@nmit.ac.in" && password === "cse2020") {
     req.session.email = email;
+    req.session.payload=payload;
     res.redirect('/restaurant/auth');
   } else {
     res.render('restaurant', {
       title: 'Restaurant Page',
-      error:"Incorrect email and password"
+      error:"Please enter email and password",
+      payload:payload,
     });
   }
 });
 
 
 router.get('/restaurant/auth', function (req, res, next) {
-  res.render("restaurantHome",{
-    title:"Home Page"
-  })
-  // if (req.session.email) {
-  //   // res.write(`<h1>Hello ${req.session.email} </h1><br>`);
-  //   // res.end('<a href=' + '/restaurant/logout' + '>Logout</a>');
-  //   res.render("restaurantHome",{
-  //     title:"Home Page"
-  //   })
-  // } else {
-  //   // res.write('<h1>Please login first.</h1>');
-  //   // res.end('<a href=' + '/' + '>Login</a>');
-  //   req.session.error="Please login first."
-  //   res.redirect('/restaurant');
-  // }
-});
 
+  if (req.session.email) {
+    // res.write(`<h1>Hello ${req.session.email} </h1><br>`);
+    // res.end('<a href=' + '/restaurant/logout' + '>Logout</a>');
+    var fileData = files.getFileContent('data/restaurantBooking.json');
+    var jsonFileData = JSON.parse(fileData);
+    const date= req.session.payload.date;
+    const time= req.session.payload.time;
+    var sendInfo={};
+    if(jsonFileData[date] && jsonFileData[date][time]){
+      sendInfo=jsonFileData[date][time];
+    } else{
+      jsonFileData[date]={};
+      jsonFileData[date][time]={};
+      const obj={
+        isBooked: false,
+        bookId: Math.floor(Math.random() * Math.floor(100))
+      }
+      jsonFileData[date][time]=obj
+      sendInfo=jsonFileData[date][time];
+      fs.writeFile('data/restaurantBooking.json', JSON.stringify(jsonFileData, null, 4), 'utf-8', function (err) {
+        if (err) {
+          // alert("Error" + err.message);
+          console.log("Error" + err.message);
+        } else {
+          // alert("Updated data successfully");
+          console.log("Updated data successfully");
+        }
+      });
+    }
+    res.render("restaurantHome",{
+      title:"Home Page",
+      payload:req.session.payload,
+      email:req.session.email,
+      receiveInfo:sendInfo
+    })
+  } else {
+    // res.write('<h1>Please login first.</h1>');
+    // res.end('<a href=' + '/' + '>Login</a>');
+    req.session.error="Please login first."
+    res.redirect('/restaurant');
+  }
+});
+router.post('/restaurant/auth', function (req, res, next) {
+
+  res.render("restaurantHome",{
+    title:"Home Page",
+    payload:req.session.payload
+  })
+});
 router.get('/restaurant/logout',(req,res) => {
   req.session.destroy((err) => {
       if(err) {

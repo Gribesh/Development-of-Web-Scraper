@@ -1,18 +1,19 @@
 {
-    "calendarDetails": [{
+    "calendarDetails": [
+        {
             "name": "kumar",
             "date": "2020-02-21",
-            "isFree":"true"
+            "isFree": "true"
         },
         {
             "name": "kumar",
             "date": "2020-02-22",
-            "isFree":"true"
+            "isFree": "true"
         },
         {
-            "name": "kumar",
-            "date": "2020-02-23",
-            "isFree":"false"
+            "name": "Kumar",
+            "date": "10/17/2020",
+            "isFree": "true"
         }
     ]
 }
