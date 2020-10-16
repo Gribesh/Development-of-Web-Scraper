@@ -34,50 +34,51 @@ html
           ui
             each value in suggestedDate
               li=value
-
-    .container
-      h6= "Movie available for the date"
-      -var ob= moviesDate
-      .card-deck
-        -for(var i in ob)
-          -for(var y in ob[i])
-            .card
-              .card-body
-                h5.card-title Card title
-                -for(var prop in ob[i][y])
-                  p.card-text #{prop}: #{ob[i][y][prop]}
-              .card-footer
-                  a.btn.btn-primary.active(href='#', onclick='sendDetails("'+ob[i][y]["time"]+'","'+ob[i][y]["date"]+'")', role='button')  Lets Book restaurant
-                  script.
-                    function sendDetails(time,date) {
-                      var data = {
-                        time:time,
-                        date:date
-                      }
-                     var redirect = function(url, method,params) {
-                      var form = document.createElement('form');
-                      form.method = method;
-                      form.action = url;
-                      for (const key in params) {
-                        if (params.hasOwnProperty(key)) {
-                          const hiddenField = document.createElement('input');
-                          hiddenField.type = 'hidden';
-                          hiddenField.name = key;
-                          hiddenField.value = params[key];
-                          form.appendChild(hiddenField);
+    if error
+    else
+      .container
+        h6= "Movie available for the date"
+        -var ob= moviesDate
+        .card-deck
+          -for(var i in ob)
+            -for(var y in ob[i])
+              .card
+                .card-body
+                  h5.card-title Card title
+                  -for(var prop in ob[i][y])
+                    p.card-text #{prop}: #{ob[i][y][prop]}
+                .card-footer
+                    a.btn.btn-primary.active(href='#', onclick='sendDetails("'+ob[i][y]["time"]+'","'+ob[i][y]["date"]+'")', role='button')  Lets Book restaurant
+                    script.
+                      function sendDetails(time,date) {
+                        var data = {
+                          time:time,
+                          date:date
                         }
+                      var redirect = function(url, method,params) {
+                        var form = document.createElement('form');
+                        form.method = method;
+                        form.action = url;
+                        for (const key in params) {
+                          if (params.hasOwnProperty(key)) {
+                            const hiddenField = document.createElement('input');
+                            hiddenField.type = 'hidden';
+                            hiddenField.name = key;
+                            hiddenField.value = params[key];
+                            form.appendChild(hiddenField);
+                          }
+                        }
+                        document.body.append(form);
+                        form.submit();
+                      };
+                      redirect('http://localhost:8080/restaurant', 'post',data);
+
+                        //- $.post("/restaurant", { time: i , date: y } );
+                        //- alert("I am an alert box! "+i +" "+y);
                       }
-                      document.body.append(form);
-                      form.submit();
-                    };
-                    redirect('http://localhost:8080/restaurant', 'post',data);
 
-                      //- $.post("/restaurant", { time: i , date: y } );
-                      //- alert("I am an alert box! "+i +" "+y);
-                    }
-
-                  //- #{ob[i][y]["date"]}
-                  //- '+ob+','+i+','+y+'
-                  //- #{ob[i][y]["time"]}
+                    //- #{ob[i][y]["date"]}
+                    //- '+ob+','+i+','+y+'
+                    //- #{ob[i][y]["time"]}
 
       

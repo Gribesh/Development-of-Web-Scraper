@@ -2,7 +2,7 @@
     "calendarDetails": [{
             "name": "mahesh",
             "date": "2020-02-21",
-            "isFree":"true"
+            "isFree":"false"
         },
         {
             "name": "mahesh",

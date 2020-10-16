@@ -15,6 +15,7 @@ router.get('/weekend', async function (req, res, next) {
   var maheshData = await scrap.getFreeDate("Mahesh");
   var parveshData = await scrap.getFreeDate("Parvesh");
   var suggestedDate = [];
+  var error;
   var length = Math.min(kumarData.length, maheshData.length, parveshData.length);
   for (var i = 0; i < length; i++) {
     if (maheshData.includes(kumarData[i])) {
@@ -27,6 +28,9 @@ router.get('/weekend', async function (req, res, next) {
   for (date of suggestedDate) {
     moviesDate.push(scrap.getMovieDetails(date));
   }
+  if(kumarData.length==0 || maheshData.length==0 || parveshData.length==0 || suggestedDate.length==0 || moviesDate.length==0){
+    error="Can't find proper date. Please add few more dates"
+  }
   res.render('index', {
     title: 'Development of Web Scraper',
     kumarData: kumarData,
@@ -34,7 +38,7 @@ router.get('/weekend', async function (req, res, next) {
     parveshData: parveshData,
     suggestedDate: suggestedDate,
     moviesDate: moviesDate,
-    error: ""
+    error: error
   });
 });
 
