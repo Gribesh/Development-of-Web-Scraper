@@ -75,7 +75,6 @@ router.get('/calendar/:id', function (req, res, next) {
 });
 
 router.post('/calendar/:id', function (req, res, next) {
-  console.log("This is called.")
   var date = req.body.datepicker;
   var isFree = req.body.isFree;
   var name = req.body.personname;
