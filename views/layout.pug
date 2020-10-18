@@ -1,7 +1,14 @@
 doctype html
 html
   head
-    title= title
+    block head
+      title Event Plan
+    link(rel='shortcut icon', href='/images/event.svg')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    script(src='/javascripts/jquery-3.3.1.slim.min.js')
+    script(src='/javascripts/popper.min.js')
+    script(src='/javascripts/bootstrap.min.js')
+    block customStyleSheet
   body
     block content
