@@ -1,39 +1,42 @@
-doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/restaurantLogin.css')
-    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
-    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css')
+extends layout
 
-  body 
-    .container
-      .d-flex.justify-content-center.h-100
-        .card
-          .card-header
-            h3 Sign In
-          if error
-            p.text-warning(style='text-align: center;')
-              | #{error}
-          .card-body
-            form(method="POST" action="#")
-              .input-group.form-group
-                .input-group-prepend
-                  span.input-group-text
-                    i.fas.fa-user
-                input#email.form-control(type='email', placeholder='Email', name="email")
-                if payload
-                  input#date(type='hidden', name='date',value=payload.date)
-                  input#time(type='hidden', name='time',value=payload.time)
-              .input-group.form-group
-                .input-group-prepend
-                  span.input-group-text
-                    i.fas.fa-key
-                input#password.form-control(type='Password', placeholder='Password', name="password")
-              .row.align-items-center.remember
-                input(type='checkbox')
-                | Remember Me
-              .form-group
-                input.btn.float-right.login_btn(type='submit', value='Login')
-          .card-footer
-            p.text-center= "Gribesh"
+block head
+  title= title
+block defaultStyleSheet
+
+block customStyleSheet
+  link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+  link(rel='stylesheet', href='/stylesheets/restaurantLogin.css')
+  link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css')
+
+block content
+  .container
+    .d-flex.justify-content-center.h-100
+      .card
+        .card-header
+          h3 Sign In
+        if error
+          p.text-warning(style='text-align: center;')
+            | #{error}
+        .card-body
+          form(method="POST" action="#")
+            .input-group.form-group
+              .input-group-prepend
+                span.input-group-text
+                  i.fas.fa-user
+              input#email.form-control(type='email', placeholder='Email', name="email")
+              if payload
+                input#date(type='hidden', name='date',value=payload.date)
+                input#time(type='hidden', name='time',value=payload.time)
+            .input-group.form-group
+              .input-group-prepend
+                span.input-group-text
+                  i.fas.fa-key
+              input#password.form-control(type='Password', placeholder='Password', name="password")
+            .row.align-items-center.remember
+              input(type='checkbox')
+              | Remember Me
+            .form-group
+              input.btn.float-right.login_btn(type='submit', value='Login')
+        .card-footer
+          p.text-center= "Gribesh"
