@@ -1,11 +1,17 @@
-doctype html
-head
+extends layout
+
+block head
   title Restaurant | Booking Information
-  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
-  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' )
-  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
+  
+block defaultStyleSheet
+  link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+  script(src='/javascripts/jquery-3.3.1.slim.min.js' )
+  script(src='/javascripts/bootstrap.min.js')
+
+block customStyleSheet
   link(rel='stylesheet', href='/stylesheets/restaurantHome.css')
-body
+
+block content
   .wrapper(style="background-image: url('/images/banner.jpg')")
     .inner
       .image-holder
