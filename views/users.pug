@@ -1,60 +1,55 @@
-doctype html
-html
-  head
-    title= title + ' | Calendar'
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-    script(src='/javascripts/jquery-3.2.1.slim.min.js')
-    script(src='/javascripts/popper.min.js')
-    script(src='/javascripts/bootstrap.min.js')
-    script(src='https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js', type='text/javascript')
-    script(src='/javascripts/saveFile.js')
-    link(href='https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css', rel='stylesheet', type='text/css')
+extends layout
 
+block head
+  title= title
+block customStyleSheet
+  script(src='/javascripts/gijgo.min.js', type='text/javascript')
+  script(src='/javascripts/saveFile.js')
+  link(href='/stylesheets/gijgo.min.css', rel='stylesheet', type='text/css')
 
-  body
-    h1= "Hello,"+title
-    .container
-      form(class="form-signin" method="POST" action="#")
-        .row
-          .col-md-4
-            input#personname(type="hidden", name="personname", value=title)
-            label Pick a date
-            input#datepicker(width='276', name="datepicker")
-            script.
-              $('#datepicker').datepicker({
-                uiLibrary: 'bootstrap4'
-              });
-          .col-md-4
-            label Are you free?
-            select#isFree.select.form-control.input-lg(name='isFree')
-              option(value='true') Yes
-              option(value='false') No 
-          .col-md-4
-            label
-            - var buttonClass=['btn', 'btn-xs', 'btn-primary', 'btn-block'];
-            button(class=buttonClass type="submit") Submit      
-      
-    br
-    .container
-      h4= "Calendar Details"
-      -var ob= details
-      -ob = details['calendarDetails']
-      .card-deck
-        -for(var i in ob)
-          -var test = !(i%3)
-          //- TODO
-          //- Attempt to make 3 in a row (Failed)  Currently .card-deck becomes one div and closes can be viewed by inspecting
-          //- p.card-text #{i%3} #{test}
-          //- #{(test? : .card-deck)}
-          //- if test
-            //- p= "Inside" 
-          .card
-            .card-body
-              h5.card-title Card title
-              -for(var prop in ob[i])
-                p.card-text #{prop}: #{ob[i][prop]}
-            .card-footer
-                small.text-muted Updated Date and Time
+block content
+  h1= "Hello,"+title
+  .container
+    form(class="form-signin" method="POST" action="#")
+      .row
+        .col-md-4
+          input#personname(type="hidden", name="personname", value=title)
+          label Pick a date
+          input#datepicker(width='276', name="datepicker")
+          script.
+            $('#datepicker').datepicker({
+              uiLibrary: 'bootstrap4'
+            });
+        .col-md-4
+          label Are you free?
+          select#isFree.select.form-control.input-lg(name='isFree')
+            option(value='true') Yes
+            option(value='false') No 
+        .col-md-4
+          label
+          - var buttonClass=['btn', 'btn-xs', 'btn-primary', 'btn-block'];
+          button(class=buttonClass type="submit") Submit      
+    
+  br
+  .container
+    h4= "Calendar Details"
+    -var ob= details
+    -ob = details['calendarDetails']
+    .card-deck
+      -for(var i in ob)
+        -var test = !(i%3)
+        //- TODO
+        //- Attempt to make 3 in a row (Failed)  Currently .card-deck becomes one div and closes can be viewed by inspecting
+        //- p.card-text #{i%3} #{test}
+        //- #{(test? : .card-deck)}
+        //- if test
+          //- p= "Inside" 
+        .card
+          .card-body
+            h5.card-title Card title
+            -for(var prop in ob[i])
+              p.card-text #{prop}: #{ob[i][prop]}
+          .card-footer
+              small.text-muted Updated Date and Time
 
 
