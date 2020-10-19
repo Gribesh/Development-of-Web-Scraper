@@ -1,16 +1,3 @@
 {
-    "2020-02-21": {
-        "3PM-6PM": {
-            "isBooked": "true",
-            "bookId": 27,
-            "email": "1nt17cs063.gribesh@nmit.ac.in"
-        }
-    },
-    "2020-02-22": {
-        "3PM-6PM": {
-            "isBooked": "true",
-            "bookId": 75,
-            "email": "1nt17cs063.gribesh@nmit.ac.in"
-        }
-    }
+   
 }

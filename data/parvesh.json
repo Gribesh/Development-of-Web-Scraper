@@ -1,18 +1,14 @@
 {
-    "calendarDetails": [{
-            "name": "parvesh",
-            "date": "2020-02-21",
-            "isFree":"true"
+    "calendarDetails": [
+        {
+            "name": "Parvesh",
+            "date": "10/11/2020",
+            "isFree": "true"
         },
         {
-            "name": "parvesh",
-            "date": "2020-02-22",
-            "isFree":"true"
-        },
-        {
-            "name": "parvesh",
-            "date": "2020-02-23",
-            "isFree":"false"
+            "name": "Parvesh",
+            "date": "10/10/2020",
+            "isFree": "false"
         }
     ]
 }
