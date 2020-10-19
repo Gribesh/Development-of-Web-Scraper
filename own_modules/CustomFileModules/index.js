@@ -3,7 +3,7 @@ var fileFunction = {};
 
 /**
  * 
- * @param {string} filename // Path to the file.
+ * @param {String} filename // Path to the file.
  * @returns {JSON} // returns json or error if any
  */
 fileFunction.getFileContent = (filename) => {

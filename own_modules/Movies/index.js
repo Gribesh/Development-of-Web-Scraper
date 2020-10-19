@@ -1,7 +1,11 @@
 (function () {
     var files = require('../CustomFileModules/index.js');
     var moviesFunction = {};
-
+    /**
+     * 
+     * @param {String} date //Date
+     * @returns {Array} // movies data for the date
+     */
     moviesFunction.getMovieDetails = (date)=>{
         const fileData = files.getFileContent("data/cinema.json");
         var data=[];
