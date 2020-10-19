@@ -1,6 +1,11 @@
 var fs = require('fs');
 var fileFunction = {};
 
+/**
+ * 
+ * @param {string} filename // Path to the file.
+ * @returns {JSON} // returns json or error if any
+ */
 fileFunction.getFileContent = (filename) => {
   try {
     var result = fs.readFileSync(filename, 'utf-8');
