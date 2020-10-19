@@ -1,14 +1,14 @@
 extends layout
 
 block head
-  title= title
+  title= title +" | Calendar"
 block customStyleSheet
   script(src='/javascripts/gijgo.min.js', type='text/javascript')
   link(href='/stylesheets/gijgo.min.css', rel='stylesheet', type='text/css')
 
 block content
-  h1= "Hello,"+title
   .container
+    h1= "‎‎‎‎‎‎‎‎‎‎Hi,"+title
     form(class="form-signin" method="POST" action="#")
       .row
         .col-md-4

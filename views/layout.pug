@@ -12,4 +12,25 @@ html
       script(src='/javascripts/bootstrap.min.js')
     block customStyleSheet
   body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#basicExampleNav', aria-controls='basicExampleNav', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #basicExampleNav.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='/')
+              | Home
+              span.sr-only (current)
+          //- li.nav-item.dropdown
+          //-   a#navbarDropdownMenuLink.nav-link.dropdown-toggle(data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Calendar
+          //-   .dropdown-menu.dropdown-primary(aria-labelledby='navbarDropdownMenuLink')
+          //-     a.dropdown-item(href='#') Kumar
+          //-     a.dropdown-item(href='#') Parvesh
+          //-     a.dropdown-item(href='#') Mahesh
+          li.nav-item
+            a.nav-link(href='/calendar') Calendar
+          li.nav-item
+            a.nav-link(href='/cinema') Cinema
+          li.nav-item
+            a.nav-link(href='/restaurant') Restaurant
     block content

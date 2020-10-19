@@ -6,13 +6,13 @@
 body {
   font-family: "Poppins-Regular";
   color: #333;
-  font-size: 13px;
+  font-size: 14px;
   margin: 0; }
 
 input, textarea, select, button {
   font-family: "Poppins-Regular";
   color: #333;
-  font-size: 13px; }
+  font-size: 14px; }
 
 p, h1, h2, h3, h4, h5, h6, ul {
   margin: 0; }
@@ -31,7 +31,7 @@ a:hover {
   outline: none; }
 
 .wrapper {
-  min-height: 100vh;
+  min-height: 91.75vh;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -82,19 +82,19 @@ a:hover {
   padding: 0;
   margin-bottom: 25px; }
   .form-control::-webkit-input-placeholder {
-    font-size: 13px;
+    font-size: 14px;
     color: #333;
     font-family: "Poppins-Regular"; }
   .form-control::-moz-placeholder {
-    font-size: 13px;
+    font-size: 14px;
     color: #333;
     font-family: "Poppins-Regular"; }
   .form-control:-ms-input-placeholder {
-    font-size: 13px;
+    font-size: 14px;
     color: #333;
     font-family: "Poppins-Regular"; }
   .form-control:-moz-placeholder {
-    font-size: 13px;
+    font-size: 14px;
     color: #333;
     font-family: "Poppins-Regular"; }
 
