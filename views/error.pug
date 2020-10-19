@@ -1,11 +1,8 @@
-extends layout
-
-block head
-  title= title
-block defaultStyleSheet
-
-block customStyleSheet
-  link(rel='stylesheet', href='/stylesheets/errorStyle.css')
+doctype html
+html
+  head
+    title Error Page
+    link(rel='stylesheet', href='/stylesheets/errorStyle.css')
 
 block content
   h1= "Oops! You ran out of oxygen"

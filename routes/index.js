@@ -231,7 +231,7 @@ router.get('/restaurant/logout',(req,res) => {
       if(err) {
           return console.log(err);
       }
-      res.redirect('/restaurant');
+      res.redirect('/');
   });
 });
 
