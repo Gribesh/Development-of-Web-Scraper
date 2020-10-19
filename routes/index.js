@@ -11,6 +11,7 @@ router.get('/', function (req, res, next) {
   res.redirect('/weekend');
 });
 
+/* GET weekend page. */
 router.get('/weekend', async function (req, res, next) {
   var kumarData = await scrap.getFreeDate("Kumar");
   var maheshData = await scrap.getFreeDate("Mahesh");
@@ -43,6 +44,7 @@ router.get('/weekend', async function (req, res, next) {
   });
 });
 
+/* GET calendar page. */
 router.get('/calendar', function (req, res, next) {
   var name = req.query.name;
   if (name) {
@@ -58,10 +60,13 @@ router.get('/calendar', function (req, res, next) {
   });
 });
 
+/* POST calendar page. */
+
 router.post('/calendar', function (req, res, next) {
   res.redirect('/calendar/' + req.body.name);
 });
 
+/* GET calendar page for each user */
 router.get('/calendar/:id', function (req, res, next) {
   const name = req.params.id;
   if (!(data['friendsName'].includes(name))) {
@@ -75,6 +80,8 @@ router.get('/calendar/:id', function (req, res, next) {
   });
 });
 
+
+/* POST calendar page for each user */
 router.post('/calendar/:id', function (req, res, next) {
   var date = req.body.datepicker;
   var isFree = req.body.isFree;
@@ -100,6 +107,7 @@ router.post('/calendar/:id', function (req, res, next) {
   res.redirect('/calendar/' + name);
 });
 
+/* GET cinema page */
 router.get('/cinema', function (req, res, next) {
   var movieDetails = files.getFileContent("data/cinema.json");
   movieDetails = JSON.parse(movieDetails);
@@ -109,6 +117,7 @@ router.get('/cinema', function (req, res, next) {
   });
 });
 
+/* GET restaurant page */
 router.get('/restaurant', function (req, res, next) {
   var date=req.query.date;
   var time =  req.query.time;
@@ -130,6 +139,7 @@ router.get('/restaurant', function (req, res, next) {
   }
 });
 
+/* POST restaurant page */
 router.post('/restaurant', function (req, res, next) {
   var email = req.body.email;
   var password = req.body.password;
@@ -153,7 +163,7 @@ router.post('/restaurant', function (req, res, next) {
   }
 });
 
-
+/* GET restaurant auth page */
 router.get('/restaurant/auth', function (req, res, next) {
 
   if (req.session.email) {
@@ -198,6 +208,7 @@ router.get('/restaurant/auth', function (req, res, next) {
     res.redirect('/restaurant');
   }
 });
+/* POST restaurant auth page */
 router.post('/restaurant/auth', function (req, res, next) {
   const time = req.session.payload.time;
   const email = req.session.email;
@@ -227,6 +238,7 @@ router.post('/restaurant/auth', function (req, res, next) {
     receiveInfo:saveObject
   })
 });
+/* GET logout page */
 router.get('/restaurant/logout',(req,res) => {
   req.session.destroy((err) => {
       if(err) {
@@ -236,11 +248,20 @@ router.get('/restaurant/logout',(req,res) => {
   });
 });
 
+/* GET marco page */
+router.get('/marco', function (req, res, next) {
+  res.render('polo', {
+    title: "polo"
+  });
+});
+
+/* GET marco page for user */
 router.get('/marco/:id', function (req, res, next) {
   var id = req.params.id;
   res.render('polo', {
     title: id
   });
 });
+
 
 module.exports = router;
