@@ -3,6 +3,7 @@ var router = express.Router();
 var data = require('../data/data.json');
 var files = require('../own_modules/CustomFileModules');
 var scrap = require('../own_modules/ScrappingData');
+var movies = require('../own_modules/Movies');
 var fs = require('fs');
 
 /* GET home page. */
@@ -26,7 +27,7 @@ router.get('/weekend', async function (req, res, next) {
   }
   var moviesDate = [];
   for (date of suggestedDate) {
-    moviesDate.push(scrap.getMovieDetails(date));
+    moviesDate.push(movies.getMovieDetails(date));
   }
   if(kumarData.length==0 || maheshData.length==0 || parveshData.length==0 || suggestedDate.length==0 || moviesDate.length==0){
     error="Can't find proper date. Please add few more dates"
