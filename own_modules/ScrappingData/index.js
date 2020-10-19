@@ -4,6 +4,10 @@
     const fs = require("fs");
     var files = require('../CustomFileModules/index.js');
     var scrappingFunction = {};
+    
+    /**
+     * This function calculates all data and stores.
+     */
 
     scrappingFunction.calculateAllData = async () => {
         var returnData = [];
@@ -46,6 +50,11 @@
             resolve(returnData);
         })
     }
+    /**
+     * 
+     * @param {String} userName // name of person
+     * @returns {Array} // all data of that user. 
+     */
     scrappingFunction.getAllData = async (userName) => {
         var datas = [];
         await scrappingFunction.calculateAllData().then(data => {
@@ -53,6 +62,11 @@
         });
         return datas;
     }
+    /**
+     * 
+     * @param {String} userName // name of person
+     * @returns {Array} // free date of that user. 
+     */
     scrappingFunction.getFreeDate = async (userName) => {
         var datas = [];
         await scrappingFunction.calculateAllData().then(data => {
@@ -60,6 +74,11 @@
         });
         return datas;
     }
+    /**
+     * 
+     * @param {String} userName // name of person
+     * @returns {Array} // busy date of that user. 
+     */
     scrappingFunction.getBusyDate = async (userName) => {
         var datas = [];
         await scrappingFunction.calculateAllData().then(data => {
