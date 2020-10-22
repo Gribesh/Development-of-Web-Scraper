@@ -16,7 +16,7 @@
         // console.log(userNames);
         for (user in userNames) {
             const individualName = userNames[user];
-            const userCalendar = "http://localhost:8080/calendar/" + individualName;
+            const userCalendar = "https://desolate-thicket-33100.herokuapp.com/calendar/" + individualName;
             let allData = [];
             let freeDate = [];
             let busyDate = [];
