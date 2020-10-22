@@ -6,12 +6,6 @@
             "isBooked":"true"
         },
         {
-            "name": "XYZ",
-            "date": "10/11/2020",
-            "time":"3PM-6PM",
-            "isBooked":"true"
-        },
-        {
             "name": "ZYX",
             "date": "10/17/2020",
             "time":"3PM-6PM",
@@ -20,6 +14,12 @@
         {
             "name": "KLM",
             "date": "10/24/2020",
+            "time":"3PM-6PM",
+            "isBooked":"false"
+        },
+        {
+            "name": "XYZ",
+            "date": "10/31/2020",
             "time":"3PM-6PM",
             "isBooked":"false"
         }

@@ -34,9 +34,10 @@ block content
           if receiveInfo.isBooked=='true'
             if receiveInfo.email
               h6.text-success Booking Done Succesfully. Enjoy!!
+              h6.text-success Please show this book id  #{receiveInfo.bookId} at the counter.
             else
               h6.text-danger Sorry to inform you, but all seats are booked.
-              a(href='http://localhost:8080', style='text-decoration: none') Please Plan again
+              a(href='/', style='text-decoration: none') Please Plan again
           else
             h6.text-success Seats available, If you want to book please press submit button. 
             .form-group.container-login100-form-btn
